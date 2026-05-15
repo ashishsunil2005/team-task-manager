@@ -23,50 +23,50 @@ const Signup = () => {
 
   return (
     <div className="flex items-center justify-center min-h-[80vh]">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="glass-panel p-8 w-full max-w-md">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Create Account</h2>
-          <p className="text-gray-500 mt-2">Join TeamTask Manager</p>
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500 tracking-tight">Create Account</h2>
+          <p className="text-gray-300 mt-2 font-medium">Join TeamTask Manager</p>
         </div>
         
-        {error && <div className="mb-4 bg-red-50 text-red-600 p-3 rounded-md text-sm">{error}</div>}
+        {error && <div className="mb-6 bg-red-500/20 border border-red-500/50 text-red-200 p-4 rounded-xl text-sm font-medium backdrop-blur-md">{error}</div>}
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">Full Name</label>
             <input
               type="text"
               required
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="glass-input block w-full px-4 py-3"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">Email</label>
             <input
               type="email"
               required
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="glass-input block w-full px-4 py-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">Password</label>
             <input
               type="password"
               required
               minLength="6"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="glass-input block w-full px-4 py-3"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Role (Demo purposes)</label>
+            <label className="block text-sm font-semibold text-gray-200 mb-2">Role (Demo purposes)</label>
             <select
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="glass-input block w-full px-4 py-3 text-gray-900 focus:text-white"
               value={role}
               onChange={(e) => setRole(e.target.value)}
             >
@@ -76,14 +76,14 @@ const Signup = () => {
           </div>
           <button
             type="submit"
-            className="w-full mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+            className="w-full vibrant-btn py-3 px-4 mt-8"
           >
             Sign Up
           </button>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-8 text-center text-sm text-gray-300">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <Link to="/login" className="font-bold text-pink-400 hover:text-pink-300 transition-colors">
             Sign in
           </Link>
         </p>

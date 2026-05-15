@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    @apply bg-gradient-to-br from-gray-900 via-indigo-950 to-purple-900 text-white font-sans antialiased min-h-screen bg-fixed animate-gradient-x;
   }
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl;
+}
+
+.glass-input {
+  @apply bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:bg-white/10 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 rounded-xl transition-all;
+}
+
+.vibrant-btn {
+  @apply bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 hover:from-purple-600 hover:via-pink-600 hover:to-rose-600 text-white font-semibold shadow-lg hover:shadow-pink-500/30 transition-all duration-300 transform hover:-translate-y-0.5 rounded-xl;
 }
