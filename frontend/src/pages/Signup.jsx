@@ -15,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await signup(name, email, password, role);
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to sign up');
     }

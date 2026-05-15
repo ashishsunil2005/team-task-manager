@@ -13,8 +13,6 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  if (!user) return null;
-
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -23,33 +21,44 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-500 tracking-tight">TeamTask</span>
+              <Link to="/" className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-500 tracking-tight">TeamTask</Link>
             </div>
-            <div className="hidden sm:ml-8 sm:flex sm:space-x-4 items-center">
-              <Link to="/" className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${isActive('/') ? 'bg-white/20 text-white shadow-inner' : 'text-gray-300 hover:text-white hover:bg-white/10'}`}>
-                <LayoutDashboard className="w-4 h-4 mr-2" />
-                Dashboard
-              </Link>
-              <Link to="/projects" className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${isActive('/projects') ? 'bg-white/20 text-white shadow-inner' : 'text-gray-300 hover:text-white hover:bg-white/10'}`}>
-                <FolderKanban className="w-4 h-4 mr-2" />
-                Projects
-              </Link>
-            </div>
+            {user && (
+              <div className="hidden sm:ml-8 sm:flex sm:space-x-4 items-center">
+                <Link to="/dashboard" className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${isActive('/dashboard') ? 'bg-white/20 text-white shadow-inner' : 'text-gray-300 hover:text-white hover:bg-white/10'}`}>
+                  <LayoutDashboard className="w-4 h-4 mr-2" />
+                  Dashboard
+                </Link>
+                <Link to="/projects" className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${isActive('/projects') ? 'bg-white/20 text-white shadow-inner' : 'text-gray-300 hover:text-white hover:bg-white/10'}`}>
+                  <FolderKanban className="w-4 h-4 mr-2" />
+                  Projects
+                </Link>
+              </div>
+            )}
           </div>
           <div className="flex items-center space-x-4">
-            <div className="text-sm hidden sm:block">
-              <span className="text-gray-300">Welcome, </span>
-              <span className="font-bold text-white">{user.name}</span>
-              <span className="ml-2 px-2 py-1 rounded-md text-xs font-bold bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white border border-white/10">
-                {user.role}
-              </span>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="text-gray-300 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-all"
-            >
-              <LogOut className="w-5 h-5" />
-            </button>
+            {user ? (
+              <>
+                <div className="text-sm hidden sm:block">
+                  <span className="text-gray-300">Welcome, </span>
+                  <span className="font-bold text-white">{user.name}</span>
+                  <span className="ml-2 px-2 py-1 rounded-md text-xs font-bold bg-gradient-to-r from-purple-600/50 to-pink-600/50 text-white border border-white/10">
+                    {user.role}
+                  </span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className="text-gray-300 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-all"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link to="/login" className="text-gray-300 hover:text-white font-semibold text-sm transition-colors">Sign In</Link>
+                <Link to="/signup" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all">Sign Up</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
